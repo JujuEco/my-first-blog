@@ -23,16 +23,12 @@
             <h1><a href="">les tribulations de Julie</a></h1>
         </div>
 
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">Mon premier post! YEAH!</a></h2>
-            <p>Deuxième journée de formation! Je deviens un Python.</p>
-        </div>
-
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">Mon deuxième post! amazing!</a></h2>
-            <p>Heureusement que les coachs sont là! sinon je serai pas en train de m'amuser avec le HTML.</p>
-        </div>
+        {% for post in posts %}
+      <div>
+          <p>publié: {{ post.published_date }}</p>
+          <h1><a href="">{{ post.title }}</a></h1>
+          <p>{{ post.text|linebreaksbr }}</p>
+      </div>
+  {% endfor %}
     </body>
 </html>
