@@ -1,34 +1,13 @@
-<html>
-    <p>Hi there!</p>
-    <p>It works!</p>
-</html>
+{% extends 'blog/base.html' %}
+{% block content %}
 
-<html>
-    <head>
-        <title>Le Blog de Julie</title>
-    </head>
-    <body>
-        <p>Hi there!</p>
-        <p>It works!</p>
-    </body>
-</html>
-
-
-<html>
-    <head>
-        <title>les tribulations de Julie</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">les tribulations de Julie</a></h1>
+{% for post in posts %}
+    <div class="post">
+        <div class="date">
+            {{ post.published_date }}
         </div>
-
-        {% for post in posts %}
-      <div>
-          <p>publié: {{ post.published_date }}</p>
-          <h1><a href="">{{ post.title }}</a></h1>
-          <p>{{ post.text|linebreaksbr }}</p>
-      </div>
-  {% endfor %}
-    </body>
-</html>
+        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+{% endfor %}
+{% endblock %}
